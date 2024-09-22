@@ -292,6 +292,43 @@ I use the below git command to add the changes.
 
 - I commit my changes to securely save my changes in the git repository with the below git command and I include a description about my update before I commit the changes.
 
+    - `git commit -m "the new created branch'`
+
+![commit_branch](./images/commit-branch.jpg)
+
+- Push changes to github enable me to upload my develoment branch with the new changes to Github, and to allow collaboration and version control via the use of the below command, and as shown on the print screen.
+
+    - `git push origin development`
+
+![pushing development branch](./images/pushing-branch.jpg)
+
+- After the branch push is done, I will have to push the merged changes to github by ensuring that the local main branch  is now containing the updates, and it is push to the remote repository on Github via the command below and see print screen.
+
+    - `git push origin main`
+
+![main-push](./images/main-push.jpg)
+
+
+### Deploying Update to the Production Server
+
+To pull the latest changes to production server require me to SSH into the AWS EC2 instance where the production website is hosted. And I will navigate to the website's directory and pull the latest changes from the main branch via the use of the below command, and as shown on the print screen below.
+
+    - `git pull origin main`
+
+![pull_AWS](./images/PULL-AWS.jpg)
+
+After I have "puLL origin main" I will have to retart the web server where it is necessary to apply all changes made.depending on the nature of the updates. I will use this command as shown below.
+
+    - `sudo systemctl reload apache2`
+
+### Testing the New Changes
+
+I will have to access the website via a browser and navigate to the public IP address of the EC2 instace, and then test the new features or the fixes to ensure they work perfectly as expected in the live environment.
+
+
+
+
+
 
 
 
