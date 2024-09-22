@@ -257,8 +257,9 @@ After I have reloaded the apache2, and the website files are inn place, and the 
 
 I then open Edge and chrome browser and copy the public ip from my EC2 instance, and paste it on the browser to view the deployed website as seen below.
 
-- [hostedwebsite](./images/hostedwebsite.jpg)
+- [hosted-Website](./images/picture.jpg)
     
+
 
 
 
