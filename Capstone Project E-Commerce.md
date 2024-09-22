@@ -259,6 +259,81 @@ I then open Edge and chrome browser and copy the public ip from my EC2 instance,
 
 - [hosted-Website](./images/picture.jpg)
     
+### 3 Continuous Integration and Deployment Workflow
+
+In other to ensure a smooth workflow for the developing, testing, and deploying my e-commerce platform, I will continually follow this structured approach.
+
+This ensure making changes in the development environment, utilizing version control with Git, and deploying update to my production server on AWS.
+
+### Step 1: Developing New Features and fixes
+
+- Create a Development Branch
+
+II will start the development work by creating a separate branch to isolates newfeatures and bug fixes from the stable version of my website.
+
+- To create a development branch, I will use the below command.
+
+    - `git branch development`
+
+- To switch the the development branch I will use the command below.
+
+    - `git checkout development`
+
+- Print screen of the created branch and switching to the "development" branch
+
+![created](./images/createdbranch.jpg)
+
+### Step 2: Version Control with Git
+
+- Stage My changes will come after I have made all required changes and I will add the change to the staging area in git. this will prepare the changes for a commit.
+I use the below git command to add the changes.
+
+    - `git add .`
+
+- I commit my changes to securely save my changes in the git repository with the below git command and I include a description about my update before I commit the changes.
+
+    - `git commit -m "the new created branch'`
+
+![commit_branch](./images/commit-branch.jpg)
+
+- Push changes to github enable me to upload my develoment branch with the new changes to Github, and to allow collaboration and version control via the use of the below command, and as shown on the print screen.
+
+    - `git push origin development`
+
+![pushing development branch](./images/pushing-branch.jpg)
+
+- After the branch push is done, I will have to push the merged changes to github by ensuring that the local main branch  is now containing the updates, and it is push to the remote repository on Github via the command below and see print screen.
+
+    - `git push origin main`
+
+![main-push](./images/main-push.jpg)
+
+
+### Deploying Update to the Production Server
+
+To pull the latest changes to production server require me to SSH into the AWS EC2 instance where the production website is hosted. And I will navigate to the website's directory and pull the latest changes from the main branch via the use of the below command, and as shown on the print screen below.
+
+    - `git pull origin main`
+
+![pull_AWS](./images/PULL-AWS.jpg)
+
+After I have "puLL origin main" I will have to retart the web server where it is necessary to apply all changes made.depending on the nature of the updates. I will use this command as shown below.
+
+    - `sudo systemctl reload apache2`
+
+### Testing the New Changes
+
+I will have to access the website via a browser and navigate to the public IP address of the EC2 instace, and then test the new features or the fixes to ensure they work perfectly as expected in the live environment.
+
+I have successfully deploy and hosted the project, and you can use the IP address below to view the MarketPeak_Ecommerce Website.
+
+        - `52.203.86.28`
+
+
+
+
+
+
 
 
 
