@@ -259,6 +259,41 @@ I then open Edge and chrome browser and copy the public ip from my EC2 instance,
 
 - [hosted-Website](./images/picture.jpg)
     
+### 3 Continuous Integration and Deployment Workflow
+
+In other to ensure a smooth workflow for the developing, testing, and deploying my e-commerce platform, I will continually follow this structured approach.
+
+This ensure making changes in the development environment, utilizing version control with Git, and deploying update to my production server on AWS.
+
+### Step 1: Developing New Features and fixes
+
+- Create a Development Branch
+
+II will start the development work by creating a separate branch to isolates newfeatures and bug fixes from the stable version of my website.
+
+- To create a development branch, I will use the below command.
+
+    - `git branch development`
+
+- To switch the the development branch I will use the command below.
+
+    - `git checkout development`
+
+- Print screen of the created branch and switching to the "development" branch
+
+![created](./images/createdbranch.jpg)
+
+### Step 2: Version Control with Git
+
+- Stage My changes will come after I have made all required changes and I will add the change to the staging area in git. this will prepare the changes for a commit.
+I use the below git command to add the changes.
+
+    - `git add .`
+
+- I commit my changes to securely save my changes in the git repository with the below git command and I include a description about my update before I commit the changes.
+
+
+
 
 
 
