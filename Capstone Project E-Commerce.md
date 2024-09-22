@@ -101,6 +101,179 @@ In other to push the my local repository content to my Github repository, I will
 
 ![gitpush](./images/gitpush.jpg)
 
+### - Challenge Encounter
+I have successfuly push my code and file to my Git Repository, but I had a challenge of not Identifying the correct push command while I was using "git push -u origin main" command instead of "git push -u origin master" command and immediately is used this command I was able to push my code and files. 
+
+### 2 AWS Deployment
+
+To deploy my "MarketPeak_Ecommerce" platform in AWS, I will have to setup my AWS EC2 instance to successfuly deploy the platform by implementing the below.
+
+#### 2.1 Setup AWS EC2 Instance
+
+- I have to log in to the AWS Management console and launch my EC2 instance using AMI Amazon Linux by connecting to the instance using SSH as the snapshot shows it below.
+
+- Log in to the AWS Management Console and Launch the EC2 instance via AMI Linux.
+
+    - log in via AMI User
+
+![login](./images/AWSIMA.jpg)
+
+    - Launching the EC2 Instance to give access for SSH
+
+![ec2lunch](./images/EC2-Launch.jpg)
+![ec2launch2](./images/EC2-Lunch2.jpg)
+
+- Connecting to the instance using SSH, and I used the "SSH" command below to Launch the Linux instance, and see print screen below on my practical action.
+
+    - `ssh -i "darey.pem" ubuntu@ec2-52-203-86-28.compute-1.amazonaws.com`
+
+![ssh](./images/ssh-ec2-1.jpg)
+![ssh2](./images/ssh-ec2-2.jpg)
+
+### 2.2 Clone the repository on the Linux Server
+
+For a successful deployment of my E-commerce platform, I will have to clone the GitHub repository on my AWS EC2 instance Linux server by authenticating with GitHub using the primary method to clone the repository through the HTTPS  or SSH link copied from my GitHub repository.
+
+- I will navigate to the repository in my GitHub console, as seen on the below print screen.
+
+![Launch-git-Rep](./images/launchgitRe.jpg)
+
+- Navigate to the MarketPeak-Ecommerce project, select the code button in green as highlighted below, and then copy the HTTPS link to clone the project on the AWS EC2 instance Linux server.
+
+- The HTTPS link from the GitHub repository
+
+	`https://github.com/Tasbaba/MarketPeak_Ecommerce.git`
+
+    Select the "MarketPeak_Ecommerce Project print Screen
+
+    ![select-project](./images/selectproject.jpg)
+
+- From the selected "MarketPeak_Ecommerce" project click on the green code button as shown below.
+
+    ![green-button](./images/select-green-buttn.jpg)
+
+-   Once the green code button is clicked, select the HTTPS tap as highlighted below, and I copy the link to enable me use the link to clone the Github repository in the AWS EC2 instance as shown below and on the print screen as well but I will officially use the SSH to clone for my learning purpose.
+
+    ![select-link](./images/select-link.jpg)
+
+I used the below "git clone" command for HTTPS but it return a fatal that destination path 'MarketPeak_Ecommerce' already exists but I have clone it already using the SSH link.
+
+`git clone https://github.com/Tasbaba/MarketPeak_Ecommerce.git`
+
+### Actual method I used to clone on my AWS EC2 instace is the SSH Method
+
+-   I access my EC2 instance Linux server to   generate SSH keypair the use of this "ssh-keygen" command as seen below and on the print screen.
+
+    `ssh-keygen`
+
+   - Generating SSH-Key
+
+![Generating-key](./images/SSH-CLONE1.jpg)
+
+- I then use the command below to access the generated ssh key at the location it was stored on my local system and copied the key as shown above.
+
+    `cat /home/ubuntu/.ssh/id_ed25519.pub`
+
+I launched my Github console, and navigate to the settings, and select the SSH and GPG Key, and I paste the copied SSH generated-key in the Key box and click on the Add SSH key as shown below.
+
+- Navigate Settings
+
+![ssh-key](./images/SSH-setings1.jpg)
+
+- Select SSH and GPG Key
+
+![ssh-key](./images/sshandgpgkeys.jpg)
+
+- Snapshot showing the key box to paste my generated-key and click on the Add SSH key.
+
+![ssh-key2](./images/paste_on_SSHKEY.jpg)
+
+- Once I have added the new SSH key for the MarketPeak_Ecommerce, I navigate the Github console to the project, and click on the green code button, and I select the SSH tap, and then copy the link to enable me perform the clone action as shown below.
+
+![copying-ssh-key](./images/copyingsshkey.jpg)
+
+I then use the command below to clone perform my clone action as seen on the print screen as well.
+
+`git clone git@github.com:Tasbaba/MarketPeak_Ecommerce.git`
+
+![clone-action](./images/SSH-CLONE2.jpg)
+
+### 2.3 Install a Web Server on EC2
+
+Apache HTTP server (httpd) is a well known and used ser server that serves HTTP files and content over the internet, I will have to install it on my Linux EC2 server to enable me to host the MarketPeak E-commerce site.
+
+In other to successfully install the apache(httpd) on EC2 linus server, I will have to run the below set of commands
+
+    - `sudo apt update -y`
+    - `sudo apt install apache2 -y`
+    - `sudo apt systemctl start apache2`
+    - `sudo apt systemctl enable apache2`
+
+The shared command is for yum package manager, and for the project I use ubuntu linu machine and the commands I used are the above listed which is meant for ubuntu servers, and not this below commands. 
+
+    - `sudo yum update -y`
+    - `sudo yum install httpd -y`
+    - `sudo yum systemctl start httpd`
+    - `sudo yum systemctl enable httpd`
+
+- Print screen for apt update
+
+![update](./images/update-apache.jpg)
+
+- Print screen for Installing Apache
+
+![install](./images/installapache2.jpg)
+
+- Print screen for starting Apache
+
+![start](./images/start-apache2.jpg)
+
+- Print screen for enabling Apache
+
+![update](./images/enableandcheckstatus-apache.jpg)
+
+After the installation and update of the Apache2 is completed, the next action is to configure the Apached2 for the website.
+
+### 2.4 Configure Apache2 for the Website
+
+In other to serve the website from my EC2 instance, I have to configure the Apache2 to point to the directory on my linux server where the website code file are stored. 
+
+Firstly, I will have to prepare the web Directory, by clearing the default Apache2 web directory, and then copy "MarketPeak Ecommerce website files into it by using the below set of commands.
+
+    -   `sudo rm -rf /var/www/html/*`
+    -   `sudo cp -r ~/MarketPeak_Ecommerce/* /var/www/html/`
+![start](./images/renameandcopying-Marketpeak-ecommerce%20.jpg)
+
+- I will now have to reload the Apache2.
+The reason for the is reload is to apply the changes for the Apache services by the use of the below command and see the reload print screen.
+
+    -   `sudo systemctl reload apache2`
+
+![reload](./images/reloadapache.jpg)
+
+### 2.5 Access Website from Browser 
+
+After I have reloaded the apache2, and the website files are inn place, and the MarketPeak Ecommerce platform is now live on the internet.
+
+I then open Edge and chrome browser and copy the public ip from my EC2 instance, and paste it on the browser to view the deployed website as seen below.
+
+- [hostedwebsite](./images/hostedwebsite.jpg)
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
