@@ -325,6 +325,9 @@ After I have "puLL origin main" I will have to retart the web server where it is
 
 I will have to access the website via a browser and navigate to the public IP address of the EC2 instace, and then test the new features or the fixes to ensure they work perfectly as expected in the live environment.
 
+I have successfully deploy and hosted the project, and you can use the IP address below to view the MarketPeak_Ecommerce Website.
+
+        - `52.203.86.28`
 
 
 
